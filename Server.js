@@ -5,7 +5,7 @@ const app = express();
 const router = express.Router();
 const mongoOp = require("./mongo");
 const Web3 = require('web3');
-const config = require('./addressConfig.json');
+const config = require('./config.json');
 
 const web3http =  new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/'+config.infuraProjectId));
 const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/'+config.infuraProjectId));
