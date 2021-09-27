@@ -5,13 +5,12 @@ const app = express();
 const router = express.Router();
 const mongoOp = require("./mongo");
 const Web3 = require('web3');
+const config = require('./addressConfig.json');
 
-const infuraProjectId = "38a18efa6cbb44cd9a7a833e93c337f8";
-const web3http =  new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/'+infuraProjectId));
-const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/'+infuraProjectId));
+const web3http =  new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/'+config.infuraProjectId));
+const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/'+config.infuraProjectId));
 
-const targetAddr = "0x586EbeC665DEa9B5B459cB9e5562DBCA3Cf2CE13";
-const account = targetAddr.toLowerCase();
+const account = config.targetAddr.toLowerCase();
 const subscription = web3.eth.subscribe('pendingTransactions', (err, res) => {
     if (err) console.error(err);
 });
